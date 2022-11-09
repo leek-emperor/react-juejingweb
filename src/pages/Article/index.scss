@@ -1,0 +1,22 @@
+@media screen and (min-width: 0) and (max-width: 980px) {
+	.sidebar {
+		display: none;
+	}
+	.article-container {
+		position: static;
+		width: 100vw !important;
+	}
+}
+
+.timeline-content {
+	position: relative;
+	left: 0;
+	top: 0;
+	.article-container {
+		position: absolute;
+		left: 0;
+		top: 0;
+		background-color: white;
+		width: 700px;
+	}
+}

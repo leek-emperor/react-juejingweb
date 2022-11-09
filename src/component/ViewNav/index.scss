@@ -1,0 +1,12 @@
+.nav-list {
+	left: 0;
+	top: -45px;
+	display: flex;
+	align-items: center;
+	line-height: 100%;
+	width: 100%;
+	line-height: 36px !important;
+	ul {
+		width: min(100%, 100vw);
+	}
+}

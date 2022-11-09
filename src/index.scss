@@ -1,0 +1,35 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+li {
+	list-style: none;
+}
+body {
+	background-color: rgb(244, 245, 245);
+	box-sizing: border-box;
+	.ant-menu-horizontal {
+		border-bottom: 0px;
+		// 1px solid #f0f0f0
+	}
+	.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-active:after,
+	.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-open:after,
+	.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-selected:after,
+	.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item:hover:after,
+	.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu-active:after,
+	.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu-open:after,
+	.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu-selected:after,
+	.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu:hover:after {
+		border-bottom: 0px;
+		// 2px solid #1890ff
+	}
+	.ant-menu-horizontal > .ant-menu-item:after,
+	.ant-menu-horizontal > .ant-menu-submenu:after {
+		border-bottom: 0px;
+	}
+	.container {
+		position: relative;
+		max-width: min(960px, 100vw) !important;
+		margin: 0 auto;
+	}
+}

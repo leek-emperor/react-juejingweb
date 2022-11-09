@@ -1,0 +1,107 @@
+@media screen and (min-width: 0) and (max-width: 992px) {
+	.drb {
+		display: none !important;
+	}
+}
+@media screen and (min-width: 0) and (max-width: 625px) {
+	.small-logo {
+		display: inline !important;
+	}
+	.big-logo {
+		display: none;
+	}
+}
+
+.remind {
+	opacity: 0.7;
+}
+.remind:hover {
+	opacity: 1;
+	cursor: pointer;
+}
+.remind {
+	display: inline-block;
+	width: 50%;
+}
+.remind-menu {
+	width: 100px;
+}
+.avatar {
+	display: inline-block;
+	cursor: pointer;
+	width: 50%;
+	margin-left: 5px;
+}
+.small-logo {
+	display: none;
+	width: 31px;
+	height: 24px;
+}
+
+.search-input {
+	width: 55%;
+	transition: 1s;
+	margin: 0 5px;
+}
+.drb {
+	width: 35%;
+	display: block;
+	transition: linear 0.3s;
+	overflow: hidden;
+	margin: 0 5px;
+	button:nth-child(1) {
+		width: 90% !important;
+	}
+	button:nth-child(2) {
+		width: 10% !important;
+	}
+}
+
+.avatar-card {
+	.user-card {
+		display: flex;
+		> div {
+			display: flex;
+			span {
+				margin-right: 10px;
+			}
+			div {
+				font-size: 16px;
+			}
+			div:first-child {
+				font-weight: 500;
+			}
+		}
+	}
+	.drop-list {
+		margin-top: 20px;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: space-between;
+		li {
+			display: flex;
+			align-items: center;
+			width: 104px;
+			height: 40px;
+			cursor: pointer;
+			font-size: 14px;
+			span {
+				margin: 0 8px;
+			}
+		}
+		li:hover {
+			background-color: #f7f8fa;
+		}
+	}
+	.group {
+		display: flex;
+		justify-content: space-between;
+		a {
+			color: #8a919f;
+		}
+		a:hover {
+			color: #1e80ff;
+		}
+	}
+}

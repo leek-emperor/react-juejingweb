@@ -1,0 +1,25 @@
+.list-header2 {
+	display: flex;
+	align-items: center;
+	height: 40px;
+	line-height: 40px;
+	border-bottom: 1px solid hsla(0, 0%, 59.2%, 0.1);
+	.nav-list2 {
+		height: 15px;
+		font-size: 16px;
+		margin: 0 10px;
+		display: flex;
+		flex-direction: row;
+		li {
+			line-height: 15px;
+			height: 15px;
+			font-size: 14px;
+			padding: 0 5px 0;
+			border-right: 1px solid hsla(0, 0%, 59.2%, 0.2);
+			cursor: pointer;
+		}
+		li:last-child {
+			border-right: none;
+		}
+	}
+}

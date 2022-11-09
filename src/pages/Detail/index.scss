@@ -1,0 +1,148 @@
+@media screen and (min-width: 0) and (max-width: 1000px) {
+	.detail-aside {
+		display: none;
+	}
+	.detail-container {
+		width: 100vw;
+	}
+	.markdown-body {
+		position: static;
+		width: 100vw !important;
+	}
+}
+
+.stick-box {
+	position: fixed;
+	top: 0;
+}
+
+.start-bfc {
+	display: flex;
+	.detail-container {
+		position: relative;
+		width: 1140px;
+		.markdown-body {
+			position: absolute;
+			background-color: #fff;
+			left: 0;
+			top: 0;
+			width: min(800px, 100vw);
+			padding: 32px;
+			.author-info-block {
+				display: flex;
+				height: 60px;
+				line-height: 60px;
+				align-items: center;
+				.info {
+					.auth {
+						color: #000;
+						height: 20px;
+						line-height: 20px;
+					}
+					.time {
+						color: #8a919f;
+						height: 20px;
+						line-height: 20px;
+					}
+				}
+			}
+		}
+		.detail-aside {
+			position: absolute;
+			right: 0;
+			top: 0;
+			width: 300px;
+			.card {
+				display: flex;
+				flex-direction: column;
+				// justify-content: center;
+				// align-items: center;
+				background-color: #fff;
+				height: 200px;
+				margin-bottom: 30px;
+				padding: 20px;
+				.show-auth {
+					display: flex;
+					align-items: center;
+					height: 48px;
+					line-height: 48px;
+					margin-bottom: 14px;
+					.auth {
+						font-size: 16px;
+						color: #000;
+						height: 24px;
+						line-height: 24px;
+					}
+					.position {
+						font-size: 14px;
+						color: #86909c;
+						height: 24px;
+						line-height: 24px;
+					}
+				}
+				.operate-btn {
+					display: flex;
+					justify-content: space-between;
+					margin-bottom: 20px;
+					button {
+						border-radius: 4px;
+						width: 120px;
+						height: 36px;
+						font-size: 14px;
+					}
+				}
+				.cut-off {
+					border-top: 1px solid rgb(222, 212, 212);
+				}
+			}
+			// 二维码区域
+			.app-link {
+				display: flex;
+				align-items: center;
+				height: 92px;
+				padding: 12px;
+				background-color: white;
+				.app-qr {
+					width: 50px;
+					height: 50px;
+					margin: 16px;
+				}
+				.app-content-box {
+					.head {
+						font-size: 14px;
+					}
+					.desc {
+						font-size: 12px;
+						color: #86909c;
+					}
+				}
+			}
+			.cata-wrap {
+				background-color: #fff;
+				height: 600px;
+				overflow: scroll;
+				overflow-x: hidden;
+			}
+			/* 定义滚动条样式 */
+			::-webkit-scrollbar {
+				width: 6px;
+				height: 6px;
+				background-color: rgba(240, 240, 240, 1);
+			}
+
+			/*定义滚动条轨道 内阴影+圆角*/
+			::-webkit-scrollbar-track {
+				box-shadow: inset 0 0 0px rgba(240, 240, 240, 0.5);
+				border-radius: 10px;
+				background-color: rgba(240, 240, 240, 0.5);
+			}
+
+			/*定义滑块 内阴影+圆角*/
+			::-webkit-scrollbar-thumb {
+				border-radius: 10px;
+				box-shadow: inset 0 0 0px rgba(240, 240, 240, 0.5);
+				background-color: rgba(181, 181, 181, 0.5);
+			}
+		}
+	}
+}
