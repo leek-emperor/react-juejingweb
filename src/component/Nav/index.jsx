@@ -2,7 +2,7 @@
  * @Description:
  * @Author: liutq
  * @Date: 2022-10-27 14:16:45
- * @LastEditTime: 2022-11-09 15:13:05
+ * @LastEditTime: 2022-11-11 14:39:04
  * @LastEditors: liutq
  * @Reference:
  */
@@ -241,7 +241,7 @@ function Nav() {
 				</Col>
 				{/* 选项 */}
 				<Col lg={{ span: 6 }} md={{ span: 7 }} sm={{ span: 0 }} xs={{ span: 0 }}>
-					<Menu mode="horizontal" items={items} defaultSelectedKeys={['article']} />
+					<Menu mode="horizontal" items={items} selectedKeys={['']} />
 				</Col>
 				{/* 搜索 */}
 				<Col

@@ -2,7 +2,7 @@
  * @Description:
  * @Author: liutq
  * @Date: 2022-10-25 18:53:50
- * @LastEditTime: 2022-11-09 16:42:43
+ * @LastEditTime: 2022-11-11 14:32:51
  * @LastEditors: liutq
  * @Reference:
  */
@@ -15,9 +15,14 @@ import './index.scss';
 import defaultAvatar from '../../assets/defaultAvatar.png';
 import { Store } from '../../store';
 import { observer } from 'mobx-react-lite';
+import { useNavigate } from 'react-router-dom';
 function Home() {
 	const { articleStore, userStore } = Store();
+	const navigate = useNavigate();
 	const username = window.localStorage.getItem('username');
+	const toSetting = () => {
+		navigate('/setting');
+	};
 	useEffect(() => {
 		articleStore.getMyArticle(username);
 		window.sessionStorage.clear();
@@ -35,12 +40,12 @@ function Home() {
 					<div className="info-box">
 						<h1>{userStore.username}</h1>
 						<div className="introduction">
-							<div className="left">
+							<div className="left" onClick={toSetting}>
 								<div className="info-input">+ 你从事上面职业？</div>
 								<div className="intro">+ 你的技术栈</div>
 							</div>
 							<div className="right">
-								<Button>编辑个人资料</Button>
+								<Button onClick={toSetting}>编辑个人资料</Button>
 							</div>
 						</div>
 					</div>
@@ -66,7 +71,7 @@ function Home() {
 					</div>
 				</a>
 				<div className="list-block">
-					<div className='myArticle'>我的文章</div>
+					<div className="myArticle">我的文章</div>
 					{articleStore.showMyList.map((d, index) => (
 						<ArticleCard data={{ ...d }} key={index} />
 					))}
