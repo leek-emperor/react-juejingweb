@@ -89,11 +89,13 @@ article_list：存储文章信息表
 
 ## 无线滚动与节流优化
 
-**scrollHeight：**整个页面的真实内容的高度。
+**scrollHeight：** 整个页面的真实内容的高度。
 
-**clientHeight：**视窗的高度，是固定的。
 
-**scrollTop：**视窗到顶部的距离。
+**clientHeight：** 视窗的高度，是固定的。
+
+
+**scrollTop：** 视窗到顶部的距离。
 
 1 如果真实的内容比视窗高度小，则一直加载到超过视窗
 
