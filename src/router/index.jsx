@@ -2,7 +2,7 @@
  * @Description:
  * @Author: liutq
  * @Date: 2022-10-26 23:02:28
- * @LastEditTime: 2022-11-08 09:48:11
+ * @LastEditTime: 2022-11-12 16:38:53
  * @LastEditors: liutq
  * @Reference:
  */
@@ -21,6 +21,8 @@ import Detail from '../pages/Detail';
 import Article from '../pages/Article';
 import Edit from '../pages/Edit';
 import Setting from '../pages/Settings';
+import PersonalSetting from '../pages/PersonalSetting';
+import AccountSetting from '../pages/AccountSetting';
 import App from '../App';
 import { observer } from 'mobx-react-lite';
 import Home from '../pages/Home';
@@ -31,8 +33,11 @@ function index() {
 				<Route path="/" element={<App />}>
 					<Route index element={<Article />}></Route>
 					<Route path="detail" element={<Detail />}></Route>
-					<Route path="/home" element={<Home />}></Route>
-					<Route path="/setting" element={<Setting />}></Route>
+					<Route path="home" element={<Home />}></Route>
+					<Route path="setting" element={<Setting />}>
+						<Route index element={<PersonalSetting />}></Route>
+						<Route path="account" element={<AccountSetting />}></Route>
+					</Route>
 				</Route>
 				<Route path="/login" element={<Login />}></Route>
 				<Route path="/edit" element={<Edit />}></Route>

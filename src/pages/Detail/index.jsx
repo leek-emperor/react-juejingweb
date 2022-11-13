@@ -2,7 +2,7 @@
  * @Description:
  * @Author: liutq
  * @Date: 2022-10-26 22:25:50
- * @LastEditTime: 2022-11-08 21:23:05
+ * @LastEditTime: 2022-11-13 10:21:45
  * @LastEditors: liutq
  * @Reference:
  */
@@ -32,7 +32,7 @@ const formatDate = str => {
 		'H+': objDate.getHours() < 10 ? '0' + objDate.getHours() : objDate.getHours(), //小时
 		'm+': objDate.getMinutes() < 10 ? '0' + objDate.getMinutes() : objDate.getMinutes(), //分
 	};
-	return `${o['Y']}'年'${o['M']}'月'${o['d+']}'日'  ${o['H+']}:${o['m+']}`;
+	return `${o['Y']}年${o['M']}月${o['d+']}日  ${o['H+']}:${o['m+']}`;
 };
 
 export default function Detail() {
@@ -116,7 +116,6 @@ export default function Detail() {
 							></Avatar>
 							<div>
 								<div className="auth">{author}</div>
-								<div className="position">职位</div>
 							</div>
 						</div>
 						<div className="operate-btn">

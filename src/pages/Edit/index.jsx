@@ -2,7 +2,7 @@
  * @Description:
  * @Author: liutq
  * @Date: 2022-10-26 23:08:24
- * @LastEditTime: 2022-11-08 23:21:02
+ * @LastEditTime: 2022-11-11 20:10:17
  * @LastEditors: liutq
  * @Reference:
  */
@@ -13,6 +13,7 @@ import { useSearchParams, useNavigate } from 'react-router-dom';
 import MdEditor from 'md-editor-rt';
 import 'md-editor-rt/lib/style.css';
 import './index.scss';
+import { Store } from '../../store';
 import defaultAvatar from '../../assets/defaultAvatar.png';
 import { getToken, http } from '../../utils';
 
@@ -23,21 +24,38 @@ MdEditor.config({
 const { TextArea } = Input;
 
 export default function Edit() {
+	const { articleStore } = Store();
 	const navigate = useNavigate();
 	//编辑功能
 	// 文案匹配，根据id
 	const [params] = useSearchParams();
-	const articleId = params.get('id');
+	const articleId = params.get('articleid');
 	// 图片列表
 	const [fileList, setFileList] = useState([]);
 	// 图片的暂存仓库
 	const cacheImgList = useRef();
+	// 频道内容
+	const [tagValue, setTagValue] = useState('');
+	// 简介内容
+	const [introValue, setIntroValue] = useState('');
 
 	// 文章标题
 	const [title, setTitle] = useState('');
 	const changeTitle = e => {
 		setTitle(e.target.value);
 	};
+	useEffect(() => {
+		articleStore.getArticle(articleId).then(res => {
+			const { status, data } = res;
+			if (status === 0) {
+				setTitle(data['title']);
+				setText(data['text']);
+				setFileList([{ url: data['img'] }]);
+				setTagValue(data['tag']);
+				setIntroValue(data['intro']);
+			}
+		});
+	}, [articleId, articleStore]);
 
 	// markdown文本
 	const [text, setText] = useState('');
@@ -62,16 +80,24 @@ export default function Edit() {
 			message.error('请输入文章标题');
 			return;
 		}
-		const { tag, intro } = values;
 		const params = {
-			tag,
-			intro,
+			tag: tagValue,
+			intro: introValue,
 			text,
 			title,
 			cover: fileList.length ? fileList[0].url : null,
 		};
 		if (articleId) {
-			console.log(1);
+			params['articleID'] = articleId;
+			const res = await http.put('/upload/article', params);
+			if (res.status) {
+				message.error(res.msg);
+			} else {
+				window.sessionStorage.removeItem('title');
+				window.sessionStorage.removeItem('content');
+				message.success(res.msg);
+				navigate('/');
+			}
 		} else {
 			const res = await http.post('/upload/article', params);
 			if (res.status) {
@@ -84,13 +110,10 @@ export default function Edit() {
 			}
 		}
 	};
-	const onRemove = () => {
-		// http.delete();
-	};
 	// 点击发布的卡片
 	const puCard = (
 		<Card title="发布文章">
-			<Form onFinish={onFinish}>
+			<Form initialValues={{ tag: tagValue, intro: introValue }} onFinish={onFinish}>
 				<Form.Item
 					label="分类"
 					name="tag"
@@ -101,7 +124,13 @@ export default function Edit() {
 						},
 					]}
 				>
-					<Radio.Group optionType="button" buttonStyle="solid">
+					<Radio.Group
+						optionType="button"
+						buttonStyle="solid"
+						onChange={e => {
+							setTagValue(e.target.value);
+						}}
+					>
 						<Radio.Button value="后端">后端</Radio.Button>
 						<Radio.Button value="前端">前端</Radio.Button>
 						<Radio.Button value="Android">Android</Radio.Button>
@@ -117,7 +146,6 @@ export default function Edit() {
 						name="img"
 						listType="picture-card"
 						className="avatar-uploader"
-						onRemove={onRemove}
 						action="http://127.0.0.1:3007/upload/img"
 						fileList={fileList}
 						headers={{
@@ -148,7 +176,10 @@ export default function Edit() {
 							height: 120,
 							resize: 'none',
 						}}
-						placeholder="disable resize"
+						placeholder="请输入简介"
+						onChange={e => {
+							setIntroValue(e.target.value);
+						}}
 					/>
 				</Form.Item>
 				<Form.Item
@@ -178,7 +209,6 @@ export default function Edit() {
 	useEffect(() => {
 		window.addEventListener('beforeunload', () => {
 			window.sessionStorage.setItem('content', text);
-			message.success(title);
 			window.sessionStorage.setItem('title', title);
 		});
 	}, [text, title]);

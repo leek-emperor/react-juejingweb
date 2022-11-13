@@ -4,7 +4,6 @@
 	max-width: 960px;
 	.major-area {
 		width: 708px;
-
 		.user-info-block {
 			display: flex;
 			height: 180px;
@@ -19,8 +18,11 @@
 					display: flex;
 					.left {
 						width: 80%;
-						color: rgb(74, 104, 173);
-						cursor: pointer;
+						.intro,
+						.info-input {
+							cursor: pointer;
+							color: rgb(74, 104, 173);
+						}
 					}
 					.right {
 						display: flex;

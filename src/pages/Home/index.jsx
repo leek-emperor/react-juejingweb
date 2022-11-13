@@ -2,7 +2,7 @@
  * @Description:
  * @Author: liutq
  * @Date: 2022-10-25 18:53:50
- * @LastEditTime: 2022-11-11 14:32:51
+ * @LastEditTime: 2022-11-13 10:16:15
  * @LastEditors: liutq
  * @Reference:
  */
@@ -23,6 +23,7 @@ function Home() {
 	const toSetting = () => {
 		navigate('/setting');
 	};
+	const { position, introduction } = userStore.infoParams;
 	useEffect(() => {
 		articleStore.getMyArticle(username);
 		window.sessionStorage.clear();
@@ -35,14 +36,26 @@ function Home() {
 					<Avatar
 						style={{ marginRight: 28 }}
 						size={90}
-						src={userStore.avatar ? userStore.avatar : defaultAvatar}
+						src={userStore.getAvatar ? userStore.getAvatar : defaultAvatar}
 					></Avatar>
 					<div className="info-box">
 						<h1>{userStore.username}</h1>
 						<div className="introduction">
-							<div className="left" onClick={toSetting}>
-								<div className="info-input">+ 你从事上面职业？</div>
-								<div className="intro">+ 你的技术栈</div>
+							<div className="left">
+								{position ? (
+									<div>{position}</div>
+								) : (
+									<div className="info-input" onClick={toSetting}>
+										+ 你从事什么职业？
+									</div>
+								)}
+								{introduction ? (
+									<div>{introduction}</div>
+								) : (
+									<div className="intro" onClick={toSetting}>
+										+ 你的技术栈
+									</div>
+								)}
 							</div>
 							<div className="right">
 								<Button onClick={toSetting}>编辑个人资料</Button>

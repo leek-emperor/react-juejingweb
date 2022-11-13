@@ -1,0 +1,26 @@
+.personal {
+	padding: 10px;
+	.user-infos {
+		display: flex;
+
+		.info-input {
+			width: 70%;
+
+			label {
+				width: 70px;
+			}
+			button {
+				margin-top: 5px;
+				margin-left: 70px;
+			}
+		}
+		.avatar-input {
+			width: 30%;
+			padding-left: 30px;
+			.avatar-uploader .ant-upload.ant-upload-select-picture-card {
+				background-color: transparent !important;
+				border: none !important;
+			}
+		}
+	}
+}

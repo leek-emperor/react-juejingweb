@@ -1,0 +1,39 @@
+.setting {
+	display: flex;
+	flex-direction: column;
+	width: 960px;
+	margin: 0 auto;
+	height: 600px;
+	margin-bottom: 30px;
+	.with-view-nav {
+		line-height: 45px;
+		.back-home {
+			padding-left: 8px;
+			color: #909090;
+			cursor: pointer;
+		}
+		.back-home:hover {
+			color: rgb(0, 127, 255);
+		}
+	}
+	nav {
+		height: 45px;
+		margin: 24px 0 16px 0;
+		background-color: #fff;
+	}
+	.view {
+		display: flex;
+		flex: 1;
+
+		.sidevar {
+			width: 214px;
+			padding: 8px;
+			background-color: #fff;
+		}
+		.sub-view-box {
+			margin-left: 30px;
+			flex: 1;
+			background-color: #fff;
+		}
+	}
+}

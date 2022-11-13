@@ -2,7 +2,7 @@
  * @Description:
  * @Author: liutq
  * @Date: 2022-10-29 14:48:00
- * @LastEditTime: 2022-11-08 23:26:02
+ * @LastEditTime: 2022-11-11 18:23:16
  * @LastEditors: liutq
  * @Reference:
  */
@@ -23,14 +23,14 @@ function ArticleCard(props) {
 	const onClick = () => {
 		navigate(`/detail?articleid=${articleID}`);
 	};
-	const { userStore, articleStore } = Store();
+	const { userStore } = Store();
 	const username = userStore.username;
 	const more = [
 		{
 			label: '编辑',
 			key: '1',
 			onClick: () => {
-				console.log(1);
+				navigate(`/edit?articleid=${articleID}`);
 			},
 		},
 		{

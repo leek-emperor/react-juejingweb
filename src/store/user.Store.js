@@ -2,7 +2,7 @@
  * @Description:
  * @Author: liutq
  * @Date: 2022-11-01 13:46:35
- * @LastEditTime: 2022-11-09 15:09:30
+ * @LastEditTime: 2022-11-13 10:09:08
  * @LastEditors: liutq
  * @Reference:
  */
@@ -14,10 +14,12 @@ class UserStore {
 		makeAutoObservable(this, {}, { autoBind: true });
 	}
 	username = '';
-	// setUsername = () => {
-	// 	this.username = window.localStorage.getItem('username');
-	// };
 	avatar = null;
+	position = null;
+	company = null;
+	homepage = null;
+	introduction = null;
+
 	async logSubmit(data) {
 		const res = await http.post('/api/login', data);
 		setToken(res.token);
@@ -29,6 +31,9 @@ class UserStore {
 	}
 	setUsername() {
 		this.username = window.localStorage.getItem('username');
+	}
+	setInfo(str, info) {
+		window.localStorage.setItem(str, info);
 	}
 	get getUsername() {
 		return window.localStorage.getItem('username');
@@ -43,11 +48,26 @@ class UserStore {
 		this.username = '';
 		this.avatar = null;
 	}
-	async getAvatar() {
+	async getInfo() {
 		const res = await http.get(`/user/getInfo?username=${this.username}`);
-		runInAction(() => {
-			this.avatar = res.avatar;
-		});
+		console.log(res);
+		this.setInfo('avatar', res.data.avatar ? res.data.avatar : '');
+		this.setInfo('position', res.data.position ? res.data.position : '');
+		this.setInfo('company', res.data.company ? res.data.company : '');
+		this.setInfo('homepage', res.data.homepage ? res.data.homepage : '');
+		this.setInfo('introduction', res.data.introduction ? res.data.introduction : '');
+	}
+	get infoParams() {
+		return {
+			username: window.localStorage.getItem('username'),
+			position: window.localStorage.getItem('position'),
+			company: window.localStorage.getItem('company'),
+			homepage: window.localStorage.getItem('homepage'),
+			introduction: window.localStorage.getItem('introduction'),
+		};
+	}
+	get getAvatar() {
+		return window.localStorage.getItem('avatar');
 	}
 }
 

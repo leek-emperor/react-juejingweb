@@ -2,7 +2,7 @@
  * @Description:
  * @Author: liutq
  * @Date: 2022-11-03 08:40:45
- * @LastEditTime: 2022-11-08 22:02:59
+ * @LastEditTime: 2022-11-11 18:38:12
  * @LastEditors: liutq
  * @Reference:
  */
@@ -35,6 +35,10 @@ class ArticleStore {
 	}
 	get showMyList() {
 		return toJS(this.myArticle);
+	}
+	async getArticle(articleid) {
+		const res = await http.get('/upload/article', { params: { articleid } });
+		return res;
 	}
 }
 

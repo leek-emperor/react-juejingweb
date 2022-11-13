@@ -2,7 +2,7 @@
  * @Description:
  * @Author: liutq
  * @Date: 2022-10-25 18:27:55
- * @LastEditTime: 2022-11-09 14:31:39
+ * @LastEditTime: 2022-11-12 20:47:00
  * @LastEditors: liutq
  * @Reference:
  */
@@ -19,7 +19,7 @@ function App() {
 	// 确保username在Mobx的状态里
 	useEffect(() => {
 		userStore.setUsername();
-		userStore.getAvatar();
+		userStore.getInfo();
 	}, [userStore]);
 	return (
 		<div className="App">
